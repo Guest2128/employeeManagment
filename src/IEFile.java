@@ -51,7 +51,8 @@ public class IEFile extends Controller{
 
             Candidate[] temp = getCollection().getCandidates();
 
-            int size = getCollection().getCountEmployees();
+            int size = getCollection().getCountCandidates();
+
             for (int i = 0; i < size; ++i) {
                 candidateWriteElement(temp[i], fileWriter);
             }

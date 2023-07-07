@@ -27,6 +27,7 @@ public class Controller {
 
         if (count == employees.length) {
             collection.incSizeEmployees();
+            employees = collection.getEmployees();
         }
 
         employees[count] = employee;
@@ -39,6 +40,7 @@ public class Controller {
 
         if (count == candidates.length) {
             collection.incSizeCandidates();
+            candidates = collection.getCandidates();
         }
 
         candidates[count] = candidate;

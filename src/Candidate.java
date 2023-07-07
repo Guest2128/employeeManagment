@@ -127,6 +127,10 @@ public class Candidate {
             try {
                 salary = parseDouble(scan.nextLine());
 
+                if (salary < 0) {
+                    throw new Exception();
+                }
+
                 break;
             } catch (Exception e) {
                 System.out.println("Указано некорректное значение. Попробуйте ещё раз.");
@@ -155,9 +159,11 @@ public class Candidate {
 
     @Override
     public String toString() {
+        String temp = String.format("%.2f", salary).replace(',', '.');
+
         StringBuilder pP = new StringBuilder();
         {
-            int size = potentialPosition.length - 1;
+            int size = potentialPosition.length;
             int i;
             for (i = 0; i < size && potentialPosition[i] != null; ++i) {
                 pP.append(potentialPosition[i]);
@@ -169,14 +175,14 @@ public class Candidate {
         }
 
         return "Кандидат\n{\n  " +
-                "Имя              = " + firstName                      + ",\n  " +
-                "Фамилия          = " + secondName                     + ",\n  " +
-                "Номер телефона   = " + telephoneNumber                + ",\n  " +
-                "Образование      = " + getEducation()                 + ",\n  " +
-                "Начальник        = " + boss                           + ",\n  " +
-                "Заработная плата = " + String.format("%.2f", salary)  + ",\n  " +
-                "Желаемые позиции = " + pP                             + ",\n  " +
-                "Департамент      = " + department                     + "\n}";
+                "Имя              = " + firstName       + ",\n  " +
+                "Фамилия          = " + secondName      + ",\n  " +
+                "Номер телефона   = " + telephoneNumber + ",\n  " +
+                "Образование      = " + getEducation()  + ",\n  " +
+                "Начальник        = " + boss            + ",\n  " +
+                "Заработная плата = " + temp            + ",\n  " +
+                "Желаемые позиции = " + pP              + ",\n  " +
+                "Департамент      = " + department      + "\n}";
     }
 
     public static Candidate createNewCandidate(Controller controller, Scanner scan) {

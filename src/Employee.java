@@ -127,6 +127,10 @@ public class Employee {
             try {
                 salary = parseDouble(scan.nextLine());
 
+                if (salary < 0) {
+                    throw new Exception();
+                }
+
                 break;
             } catch (Exception e) {
                 System.out.println("Указано некорректное значение. Попробуйте ещё раз.");
@@ -143,15 +147,17 @@ public class Employee {
 
     @Override
     public String toString() {
+        String temp = String.format("%.2f", salary).replace(',', '.');
+
         return "Сотрудник\n{\n  " +
-                "Имя              = " + firstName                      + ",\n  " +
-                "Фамилия          = " + secondName                     + ",\n  " +
-                "Номер телефона   = " + telephoneNumber                + ",\n  " +
-                "Образование      = " + getEducation()                 + ",\n  " +
-                "Начальник        = " + boss                           + ",\n  " +
-                "Заработная плата = " + String.format("%.2f", salary)  + ",\n  " +
-                "Желаемая позиция = " + position                       + ",\n  " +
-                "Департамент      = " + department                     + "\n}";
+                "Имя              = " + firstName       + ",\n  " +
+                "Фамилия          = " + secondName      + ",\n  " +
+                "Номер телефона   = " + telephoneNumber + ",\n  " +
+                "Образование      = " + getEducation()  + ",\n  " +
+                "Начальник        = " + boss            + ",\n  " +
+                "Заработная плата = " + temp            + ",\n  " +
+                "Желаемая позиция = " + position        + ",\n  " +
+                "Департамент      = " + department      + "\n}";
     }
 
     public static Employee createNewEmployee(Controller controller, Scanner scan) {
