@@ -220,6 +220,103 @@ public class Controller {
         collection.incCountCandidates(false);
     }
 
+    public void searchEmployeeName(String fN, String sN) {
+        Employee[] employees = collection.getEmployees();
+
+        int size = collection.getCountEmployees();
+
+        for (int i = 0; i < size; ++i) {
+            if (employees[i].getFirstName().equals(fN) && employees[i].getSecondName().equals(sN)) {
+                System.out.println(employees[i]);
+            }
+        }
+    }
+    public void searchCandidateName(String fN, String sN) {
+        Candidate[] candidates = collection.getCandidates();
+
+        int size = collection.getCountCandidates();
+
+        for (int i = 0; i < size; ++i) {
+            if (candidates[i].getFirstName().equals(fN) && candidates[i].getSecondName().equals(sN)) {
+                System.out.println(candidates[i]);
+            }
+        }
+    }
+
+    public void searchEmployeeBoss(String b) {
+        Employee[] employees = collection.getEmployees();
+
+        int size = collection.getCountEmployees();
+
+        for (int i = 0; i < size; ++i) {
+            if (employees[i].getBoss().equals(b)) {
+                System.out.println(employees[i]);
+            }
+        }
+    }
+    public void searchCandidateBoss(String b) {
+        Candidate[] candidates = collection.getCandidates();
+
+        int size = collection.getCountCandidates();
+
+        for (int i = 0; i < size; ++i) {
+            if (candidates[i].getBoss().equals(b)) {
+                System.out.println(candidates[i]);
+            }
+        }
+    }
+
+    public void searchEmployeePosition(String p) {
+        Employee[] employees = collection.getEmployees();
+
+        int size = collection.getCountEmployees();
+
+        for (int i = 0; i < size; ++i) {
+            if (employees[i].getPosition().equals(p)) {
+                System.out.println(employees[i]);
+            }
+        }
+    }
+    public void searchCandidatePotentialPosition(String p) {
+        Candidate[] candidates = collection.getCandidates();
+
+        int size = collection.getCountCandidates();
+
+        for (int i = 0; i < size; ++i) {
+            String[] temp = candidates[i].getPotentialPosition();
+
+            for (String element : temp) {
+                if (element.equals(p)) {
+                    System.out.println(candidates[i]);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void searchEmployeeDepartment(String d) {
+        Employee[] employees = collection.getEmployees();
+
+        int size = collection.getCountEmployees();
+
+        for (int i = 0; i < size; ++i) {
+            if (employees[i].getDepartment().equals(d)) {
+                System.out.println(employees[i]);
+            }
+        }
+    }
+    public void searchCandidateDepartment(String d) {
+        Candidate[] candidates = collection.getCandidates();
+
+        int size = collection.getCountCandidates();
+
+        for (int i = 0; i < size; ++i) {
+            if (candidates[i].getDepartment().equals(d)) {
+                System.out.println(candidates[i]);
+            }
+        }
+    }
+
     public Department distribute(Scanner scan) {
         System.out.println("Выберете один из приведённых ниже, указав его номер.");
         collection.printDepartments();
@@ -228,6 +325,7 @@ public class Controller {
                 ", другой символ означает игнорирование данного сообщения.");
 
         String temp = scan.nextLine();
+
         if (temp.equals("+")) {
             createDepartment(Department.createNewDepartment(scan));
         }
@@ -246,8 +344,10 @@ public class Controller {
         while (true) {
             try {
                 num = parseInt(scan.nextLine());
+
                 if (num < 0 || num >= collection.getCountDepartments())
                     throw new Exception("Департамента №" + num + " не существует.");
+
                 break;
             } catch (IllegalArgumentException e) {
                 System.out.println("Это не число. Попробуйте ещё раз.");

@@ -16,6 +16,7 @@ public class IEFile extends Controller{
             Department [] temp = getCollection().getDepartments();
 
             int size = getCollection().getCountDepartments();
+
             for (int i = 0; i < size; ++i) {
                 departmentWriteElement(temp[i], fileWriter);
             }
@@ -34,6 +35,7 @@ public class IEFile extends Controller{
             Employee[] temp = getCollection().getEmployees();
 
             int size = getCollection().getCountEmployees();
+
             for (int i = 0; i < size; ++i) {
                 employeeWriteElement(temp[i], fileWriter);
             }

@@ -30,12 +30,13 @@ public class Candidate {
 //        department = d;
 //    }
 
-//    public String getFirstName() {
-//        return firstName;
-//    }
-//    public String getSecondName() {
-//        return secondName;
-//    }
+    public String getFirstName() {
+        return firstName;
+    }
+    public String getSecondName() {
+        return secondName;
+    }
+
 //    public String getTelephoneNumber() {
 //        return telephoneNumber;
 //    }
@@ -43,19 +44,20 @@ public class Candidate {
     public String getEducation() {
         return education ? "Высшее" : "Нет";
     }
+    public String getBoss() {
+        return boss;
+    }
 
-//    public String getBoss() {
-//        return boss;
-//    }
 //    public double getSalary() {
 //        return salary;
 //    }
-//    public String[] getPotentialPosition() {
-//        return potentialPosition;
-//    }
-//    public String getDepartment() {
-//        return department.getName();
-//    }
+
+    public String[] getPotentialPosition() {
+        return potentialPosition;
+    }
+    public String getDepartment() {
+        return department.getName();
+    }
 
     public void setFirstName(String fN) {
         firstName = fN;
@@ -148,6 +150,7 @@ public class Candidate {
                     potentialPosition = new String[size];
                     System.arraycopy(last, 0, potentialPosition, 0, last.length);
                 }
+
                 potentialPosition[i] = temp;
                 ++i;
                 temp = scan.nextLine();
@@ -165,6 +168,7 @@ public class Candidate {
         {
             int size = potentialPosition.length;
             int i;
+
             for (i = 0; i < size && potentialPosition[i] != null; ++i) {
                 pP.append(potentialPosition[i]);
 
@@ -188,6 +192,7 @@ public class Candidate {
     public static Candidate createNewCandidate(Controller controller, Scanner scan) {
         Candidate candidate = new Candidate();
         candidate.fill(controller, scan);
+
         return candidate;
     }
 }

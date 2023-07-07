@@ -29,12 +29,13 @@ public class Employee {
 //        department = d;
 //    }
 
-//    public String getFirstName() {
-//        return firstName;
-//    }
-//    public String getSecondName() {
-//        return secondName;
-//    }
+    public String getFirstName() {
+        return firstName;
+    }
+    public String getSecondName() {
+        return secondName;
+    }
+
 //    public String getTelephoneNumber() {
 //        return telephoneNumber;
 //    }
@@ -43,18 +44,20 @@ public class Employee {
         return education ? "Высшее" : "Нет";
     }
 
-//    public String getBoss() {
-//        return boss;
-//    }
+    public String getBoss() {
+        return boss;
+    }
+
 //    public double getSalary() {
 //        return salary;
 //    }
-//    public String getPosition() {
-//        return position;
-//    }
-//    public String getDepartment() {
-//        return department.getName();
-//    }
+
+    public String getPosition() {
+        return position;
+    }
+    public String getDepartment() {
+        return department.getName();
+    }
 
     public void setFirstName(String fN) {
         firstName = fN;
@@ -156,13 +159,14 @@ public class Employee {
                 "Образование      = " + getEducation()  + ",\n  " +
                 "Начальник        = " + boss            + ",\n  " +
                 "Заработная плата = " + temp            + ",\n  " +
-                "Желаемая позиция = " + position        + ",\n  " +
+                "Должность        = " + position        + ",\n  " +
                 "Департамент      = " + department      + "\n}";
     }
 
     public static Employee createNewEmployee(Controller controller, Scanner scan) {
         Employee employee = new Employee();
         employee.fill(controller, scan);
+
         return employee;
     }
 }

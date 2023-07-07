@@ -37,6 +37,7 @@ public class Department {
     public static Department createNewDepartment(Scanner scan) {
         Department department = new Department();
         department.fill(scan);
+
         return department;
     }
 }
