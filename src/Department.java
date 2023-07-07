@@ -6,9 +6,10 @@ public class Department {
     Department() {
         name = "Пусто";
     }
-    Department(String n) {
-        name = n;
-    }
+
+//    Department(String n) {
+//        name = n;
+//    }
 
     public String getName() {
         return name;
@@ -22,7 +23,9 @@ public class Department {
         System.out.println("Департамент:");
 
         System.out.print("  Название: ");
-        name = scan.nextLine();
+        while (name.length() == 0 || name.equals("Пусто")) {
+            name = scan.nextLine();
+        }
     }
 
     @Override

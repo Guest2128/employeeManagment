@@ -2,7 +2,7 @@ import java.util.Scanner;
 import static java.lang.Integer.parseInt;
 
 public class Controller {
-    private Collection collection;
+    private final Collection collection;
 
     public Controller() {
         collection = new Collection();
@@ -47,8 +47,6 @@ public class Controller {
     }
 
     public void readDepartments(int index) {
-        int size = collection.getDepartments().length;
-
         try {
             if (index >= collection.getCountDepartments())
                 throw new Exception("Нельзя вывести элемент, которого нет.");
@@ -65,8 +63,6 @@ public class Controller {
         System.out.println(departments[index]);
     }
     public void readEmployees(int index) {
-        int size = collection.getEmployees().length;
-
         try {
             if (index >= collection.getCountEmployees())
                 throw new Exception("Нельзя вывести элемент, которого нет.");
@@ -83,8 +79,6 @@ public class Controller {
         System.out.println(employees[index]);
     }
     public void readCandidates(int index) {
-        int size = collection.getCandidates().length;
-
         try {
             if (index >= collection.getCountCandidates())
                 throw new Exception("Нельзя вывести элемент, которого нет.");
@@ -224,7 +218,7 @@ public class Controller {
         collection.incCountCandidates(false);
     }
 
-    public Department distribute(Controller controller, Scanner scan) {
+    public Department distribute(Scanner scan) {
         System.out.println("Выберете один из приведённых ниже, указав его номер.");
         collection.printDepartments();
 

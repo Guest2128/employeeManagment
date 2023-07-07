@@ -18,41 +18,44 @@ public class Candidate {
         potentialPosition = new String[] {"Пусто"};
         department = new Department();
     }
-    Candidate(String fN, String sN, String tN, boolean e, String b, double s, String[] pP, Department d) {
-        firstName = fN;
-        secondName = sN;
-        telephoneNumber = tN;
-        education = e;
-        boss = b;
-        salary = s;
-        potentialPosition = pP;
-        department = d;
-    }
 
-    public String getFirstName() {
-        return firstName;
-    }
-    public String getSecondName() {
-        return secondName;
-    }
-    public String getTelephoneNumber() {
-        return telephoneNumber;
-    }
+//    Candidate(String fN, String sN, String tN, boolean e, String b, double s, String[] pP, Department d) {
+//        firstName = fN;
+//        secondName = sN;
+//        telephoneNumber = tN;
+//        education = e;
+//        boss = b;
+//        salary = s;
+//        potentialPosition = pP;
+//        department = d;
+//    }
+
+//    public String getFirstName() {
+//        return firstName;
+//    }
+//    public String getSecondName() {
+//        return secondName;
+//    }
+//    public String getTelephoneNumber() {
+//        return telephoneNumber;
+//    }
+
     public String getEducation() {
         return education ? "Высшее" : "Нет";
     }
-    public String getBoss() {
-        return boss;
-    }
-    public double getSalary() {
-        return salary;
-    }
-    public String[] getPotentialPosition() {
-        return potentialPosition;
-    }
-    public String getDepartment() {
-        return department.getName();
-    }
+
+//    public String getBoss() {
+//        return boss;
+//    }
+//    public double getSalary() {
+//        return salary;
+//    }
+//    public String[] getPotentialPosition() {
+//        return potentialPosition;
+//    }
+//    public String getDepartment() {
+//        return department.getName();
+//    }
 
     public void setFirstName(String fN) {
         firstName = fN;
@@ -83,13 +86,19 @@ public class Candidate {
         System.out.println("Кандидат:");
 
         System.out.print("  Имя: ");
-        firstName = scan.nextLine();
+        while (firstName.length() == 0 || firstName.equals("Пусто")) {
+            firstName = scan.nextLine();
+        }
 
         System.out.print("  Фамилия: ");
-        secondName = scan.nextLine();
+        while (secondName.length() == 0 || secondName.equals("Пусто")) {
+            secondName = scan.nextLine();
+        }
 
         System.out.print("  Номер телефона: ");
-        telephoneNumber = scan.nextLine();
+        while (telephoneNumber.length() == 0 || telephoneNumber.equals("Пусто")) {
+            telephoneNumber = scan.nextLine();
+        }
 
         System.out.print("  Высшее образование (+ / -): ");
         while (true) {
@@ -100,6 +109,8 @@ public class Candidate {
                 if (!temp.equals("+") && !temp.equals("-"))
                     throw new Exception("Выбрано некорректное значение. Выберите '+' или '-'.");
 
+                setEducation(temp.equals("+"));
+
                 break;
             } catch (Exception e) {
                 System.out.println(e.getMessage());
@@ -107,7 +118,9 @@ public class Candidate {
         }
 
         System.out.print("  Начальник: ");
-        boss = scan.nextLine();
+        while (boss.length() == 0 || boss.equals("Пусто")) {
+            boss = scan.nextLine();
+        }
 
         System.out.print("  Заработная плата: ");
         while (true) {
@@ -137,7 +150,7 @@ public class Candidate {
             }
         }
 
-        department = controller.distribute(controller, scan);
+        department = controller.distribute(scan);
     }
 
     @Override
@@ -161,7 +174,7 @@ public class Candidate {
                 "Номер телефона   = " + telephoneNumber                + ",\n  " +
                 "Образование      = " + getEducation()                 + ",\n  " +
                 "Начальник        = " + boss                           + ",\n  " +
-                "Заработная плата = " + String.format("%.2f", salary) + ",\n  " +
+                "Заработная плата = " + String.format("%.2f", salary)  + ",\n  " +
                 "Желаемые позиции = " + pP                             + ",\n  " +
                 "Департамент      = " + department                     + "\n}";
     }

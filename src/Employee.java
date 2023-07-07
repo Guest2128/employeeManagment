@@ -17,41 +17,44 @@ public class Employee {
         salary = 0;
         department = new Department();
     }
-    Employee(String fN, String sN, String tN, boolean e, String b, double s, String p, Department d) {
-        firstName = fN;
-        secondName = sN;
-        telephoneNumber = tN;
-        education = e;
-        boss = b;
-        salary = s;
-        position = p;
-        department = d;
-    }
 
-    public String getFirstName() {
-        return firstName;
-    }
-    public String getSecondName() {
-        return secondName;
-    }
-    public String getTelephoneNumber() {
-        return telephoneNumber;
-    }
+//    Employee(String fN, String sN, String tN, boolean e, String b, double s, String p, Department d) {
+//        firstName = fN;
+//        secondName = sN;
+//        telephoneNumber = tN;
+//        education = e;
+//        boss = b;
+//        salary = s;
+//        position = p;
+//        department = d;
+//    }
+
+//    public String getFirstName() {
+//        return firstName;
+//    }
+//    public String getSecondName() {
+//        return secondName;
+//    }
+//    public String getTelephoneNumber() {
+//        return telephoneNumber;
+//    }
+
     public String getEducation() {
         return education ? "Высшее" : "Нет";
     }
-    public String getBoss() {
-        return boss;
-    }
-    public double getSalary() {
-        return salary;
-    }
-    public String getPosition() {
-        return position;
-    }
-    public String getDepartment() {
-        return department.getName();
-    }
+
+//    public String getBoss() {
+//        return boss;
+//    }
+//    public double getSalary() {
+//        return salary;
+//    }
+//    public String getPosition() {
+//        return position;
+//    }
+//    public String getDepartment() {
+//        return department.getName();
+//    }
 
     public void setFirstName(String fN) {
         firstName = fN;
@@ -82,13 +85,19 @@ public class Employee {
         System.out.println("Сотрудник:");
 
         System.out.print("  Имя: ");
-        firstName = scan.nextLine();
+        while (firstName.length() == 0 || firstName.equals("Пусто")) {
+            firstName = scan.nextLine();
+        }
 
         System.out.print("  Фамилия: ");
-        secondName = scan.nextLine();
+        while (secondName.length() == 0 || secondName.equals("Пусто")) {
+            secondName = scan.nextLine();
+        }
 
         System.out.print("  Номер телефона: ");
-        telephoneNumber = scan.nextLine();
+        while (telephoneNumber.length() == 0 || telephoneNumber.equals("Пусто")) {
+            telephoneNumber = scan.nextLine();
+        }
 
         System.out.print("  Высшее образование (+ / -): ");
         while (true) {
@@ -100,6 +109,8 @@ public class Employee {
                 if (!temp.equals("+") && !temp.equals("-"))
                     throw new Exception("Выбрано некорректное значение. Выберите '+' или '-'.");
 
+                setEducation(temp.equals("+"));
+
                 break;
             } catch (Exception e) {
                 System.out.println(e.getMessage());
@@ -107,7 +118,9 @@ public class Employee {
         }
 
         System.out.print("  Начальник: ");
-        boss = scan.nextLine();
+        while (boss.length() == 0 || boss.equals("Пусто")) {
+            boss = scan.nextLine();
+        }
 
         System.out.print("  Заработная плата: ");
         while (true) {
@@ -121,9 +134,11 @@ public class Employee {
         }
 
         System.out.print("  Должность: ");
-        position = scan.nextLine();
+        while (position.length() == 0 || position.equals("Пусто")) {
+            position = scan.nextLine();
+        }
 
-        department = controller.distribute(controller, scan);
+        department = controller.distribute(scan);
     }
 
     @Override

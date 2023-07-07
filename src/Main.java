@@ -1,15 +1,14 @@
 import java.util.Scanner;
-
 import static java.lang.Integer.parseInt;
 
 public class Main {
     public static void main(String[] args) {
         String[] menuStructure = {"Exit", "Department", "Employee", "Candidate"};
-        String[] menuOptions = {"Back", "Create", "Read", "ReadAll", "Update", "Delete"};
+        String[] menuOptions = {"Back", "Create", "Read", "ReadAll", "Update", "Delete", "Import", "Export"};
 
         Scanner scan = new Scanner(System.in);
 
-        Controller controller = new Controller();
+        IEFile controller = new IEFile();
 
         int option;
         while (true) {
@@ -54,6 +53,8 @@ public class Main {
                             case 3 -> controller.readAllDepartments();
                             case 4 -> controller.updateDepartment(scanIndex(scan), scan);
                             case 5 -> controller.deleteDepartment(scanIndex(scan));
+                            case 6 -> controller.departmentImportFile(scan);
+                            case 7 -> controller.departmentExportFile(scan);
                         }
                     }
                 }
@@ -82,6 +83,8 @@ public class Main {
                             case 3 -> controller.readAllEmployees();
                             case 4 -> controller.updateEmployee(scanIndex(scan), scan);
                             case 5 -> controller.deleteEmployee(scanIndex(scan));
+                            case 6 -> controller.employeeImportFile(scan);
+                            case 7 -> controller.employeeExportFile(scan);
                         }
                     }
                 }
@@ -110,6 +113,8 @@ public class Main {
                             case 3 -> controller.readAllCandidates();
                             case 4 -> controller.updateCandidate(scanIndex(scan), scan);
                             case 5 -> controller.deleteCandidate(scanIndex(scan));
+                            case 6 -> controller.candidateImportFile(scan);
+                            case 7 -> controller.candidateExportFile(scan);
                         }
                     }
                 }
