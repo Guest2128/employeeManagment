@@ -30,4 +30,10 @@ public class Department {
         return "Департамент\n{\n  " +
                 "Название = " + name + "\n}";
     }
+
+    public static Department createNewDepartment(Scanner scan) {
+        Department department = new Department();
+        department.fill(scan);
+        return department;
+    }
 }

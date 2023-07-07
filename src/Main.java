@@ -49,7 +49,7 @@ public class Main {
                         if (option == 0)
                             break;
                         switch (option) {
-                            case 1 -> controller.createDepartment(scan);
+                            case 1 -> controller.createDepartment(Department.createNewDepartment(scan));
                             case 2 -> controller.readDepartments(scanIndex(scan));
                             case 3 -> controller.readAllDepartments();
                             case 4 -> controller.updateDepartment(scanIndex(scan), scan);
@@ -77,7 +77,7 @@ public class Main {
                         if (option == 0)
                             break;
                         switch (option) {
-                            case 1 -> controller.createEmployee(scan);
+                            case 1 -> controller.createEmployee(Employee.createNewEmployee(controller, scan));
                             case 2 -> controller.readEmployees(scanIndex(scan));
                             case 3 -> controller.readAllEmployees();
                             case 4 -> controller.updateEmployee(scanIndex(scan), scan);
@@ -105,7 +105,7 @@ public class Main {
                         if (option == 0)
                             break;
                         switch (option) {
-                            case 1 -> controller.createCandidate(scan);
+                            case 1 -> controller.createCandidate(Candidate.createNewCandidate(controller, scan));
                             case 2 -> controller.readCandidates(scanIndex(scan));
                             case 3 -> controller.readAllCandidates();
                             case 4 -> controller.updateCandidate(scanIndex(scan), scan);

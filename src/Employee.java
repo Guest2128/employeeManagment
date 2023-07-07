@@ -93,10 +93,13 @@ public class Employee {
         System.out.print("  Высшее образование (+ / -): ");
         while (true) {
             String temp;
+
             try {
                 temp = scan.nextLine();
+
                 if (!temp.equals("+") && !temp.equals("-"))
                     throw new Exception("Выбрано некорректное значение. Выберите '+' или '-'.");
+
                 break;
             } catch (Exception e) {
                 System.out.println(e.getMessage());
@@ -110,6 +113,7 @@ public class Employee {
         while (true) {
             try {
                 salary = parseDouble(scan.nextLine());
+
                 break;
             } catch (Exception e) {
                 System.out.println("Указано некорректное значение. Попробуйте ещё раз.");
@@ -133,5 +137,11 @@ public class Employee {
                 "Заработная плата = " + String.format("%.2f", salary)  + ",\n  " +
                 "Желаемая позиция = " + position                       + ",\n  " +
                 "Департамент      = " + department                     + "\n}";
+    }
+
+    public static Employee createNewEmployee(Controller controller, Scanner scan) {
+        Employee employee = new Employee();
+        employee.fill(controller, scan);
+        return employee;
     }
 }

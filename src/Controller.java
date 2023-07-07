@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 import static java.lang.Integer.parseInt;
 
 public class Controller {
@@ -9,7 +8,7 @@ public class Controller {
         collection = new Collection();
     }
 
-    public void createDepartment(Scanner scan) {
+    public void createDepartment(Department department) {
         int count = collection.getCountDepartments();
         Department[] departments = collection.getDepartments();
 
@@ -18,13 +17,11 @@ public class Controller {
             departments = collection.getDepartments();
         }
 
-        Department department = new Department();
-        department.fill(scan);
         departments[count] = department;
         collection.setDepartments(departments);
         collection.incCountDepartments(true);
     }
-    public void createEmployee(Scanner scan) {
+    public void createEmployee(Employee employee) {
         int count = collection.getCountEmployees();
         Employee[] employees = collection.getEmployees();
 
@@ -32,13 +29,11 @@ public class Controller {
             collection.incSizeEmployees();
         }
 
-        Employee employee = new Employee();
-        employee.fill(this, scan);
         employees[count] = employee;
         collection.setEmployees(employees);
         collection.incCountEmployees(true);
     }
-    public void createCandidate(Scanner scan) {
+    public void createCandidate(Candidate candidate) {
         int count = collection.getCountCandidates();
         Candidate[] candidates = collection.getCandidates();
 
@@ -46,8 +41,6 @@ public class Controller {
             collection.incSizeCandidates();
         }
 
-        Candidate candidate = new Candidate();
-        candidate.fill(this, scan);
         candidates[count] = candidate;
         collection.setCandidates(candidates);
         collection.incCountCandidates(true);
@@ -84,10 +77,10 @@ public class Controller {
             return;
         }
 
-        Employee[] employeess = collection.getEmployees();
+        Employee[] employees = collection.getEmployees();
 
         System.out.format("  №%2d: ", index);
-        System.out.println(employeess[index]);
+        System.out.println(employees[index]);
     }
     public void readCandidates(int index) {
         int size = collection.getCandidates().length;
@@ -240,12 +233,12 @@ public class Controller {
 
         String temp = scan.nextLine();
         if (temp.equals("+")) {
-            createDepartment(scan);
+            createDepartment(Department.createNewDepartment(scan));
         }
 
         if (collection.getCountDepartments() == 0) {
             System.out.println("Нет ни одного департамента, его необходимо создать.\nОн будет выбран для данного человека.");
-            createDepartment(scan);
+            createDepartment(Department.createNewDepartment(scan));
             return collection.getDepartments()[0];
         }
 
@@ -268,5 +261,9 @@ public class Controller {
         }
 
         return collection.getDepartments()[num];
+    }
+
+    public Collection getCollection() {
+        return collection;
     }
 }
