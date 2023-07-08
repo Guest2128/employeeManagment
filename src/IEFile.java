@@ -153,7 +153,7 @@ public class IEFile extends Controller{
 
         Employee employee = new Employee();
 
-        final int space = 21;
+        int space = 21;
 
         String temp = scan.nextLine(); temp = temp.substring(space, temp.length() - 1);
         employee.setFirstName(temp);
@@ -211,7 +211,7 @@ public class IEFile extends Controller{
 
         Candidate candidate = new Candidate();
 
-        final int space = 21;
+        int space = 21;
 
         String temp = scan.nextLine(); temp = temp.substring(space, temp.length() - 1);
         candidate.setFirstName(temp);

@@ -97,6 +97,14 @@ public class Candidate {
             secondName = scan.nextLine();
         }
 
+        if (isEquals(controller.getCollection())) {
+            controller.getCollection().incCountCandidates(false);
+
+            System.out.println("Такой кандидат уже есть.");
+
+            return;
+        }
+
         System.out.print("  Номер телефона: ");
         while (telephoneNumber.length() == 0 || telephoneNumber.equals("Пусто")) {
             telephoneNumber = scan.nextLine();
@@ -158,6 +166,20 @@ public class Candidate {
         }
 
         department = controller.distribute(scan);
+    }
+
+    public boolean isEquals(Collection collection) {
+        Candidate[] candidates = collection.getCandidates();
+
+        int size = collection.getCountCandidates();
+
+        for (int i = 0; i < size; ++i) {
+            if (candidates[i].getFirstName().equals(firstName) && candidates[i].getSecondName().equals(secondName)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     @Override

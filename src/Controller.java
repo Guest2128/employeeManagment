@@ -52,6 +52,7 @@ public class Controller {
         try {
             if (index >= collection.getCountDepartments())
                 throw new Exception("Нельзя вывести элемент, которого нет.");
+
             if (index < 0)
                 throw new Exception("Индекс меньше нуля.");
         } catch (Exception e) {
@@ -68,6 +69,7 @@ public class Controller {
         try {
             if (index >= collection.getCountEmployees())
                 throw new Exception("Нельзя вывести элемент, которого нет.");
+
             if (index < 0)
                 throw new Exception("Индекс меньше нуля.");
         } catch (Exception e) {
@@ -84,6 +86,7 @@ public class Controller {
         try {
             if (index >= collection.getCountCandidates())
                 throw new Exception("Нельзя вывести элемент, которого нет.");
+
             if (index < 0)
                 throw new Exception("Индекс меньше нуля.");
         } catch (Exception e) {
@@ -111,6 +114,7 @@ public class Controller {
         try {
             if (index >= collection.getCountDepartments())
                 throw new Exception("Нельзя изменить элемент, которого нет.");
+
             if (index < 0)
                 throw new Exception("Индекс меньше нуля.");
         } catch (Exception e) {
@@ -119,13 +123,14 @@ public class Controller {
         }
 
         Department department = new Department();
-        department.fill(scan);
+        department.fill(collection, scan);
         collection.getDepartments()[index] = department;
     }
     public void updateEmployee(int index, Scanner scan) {
         try {
             if (index >= collection.getCountEmployees())
                 throw new Exception("Нельзя изменить элемент, которого нет.");
+
             if (index < 0)
                 throw new Exception("Индекс меньше нуля.");
         } catch (Exception e) {
@@ -141,6 +146,7 @@ public class Controller {
         try {
             if (index >= collection.getCountCandidates())
                 throw new Exception("Нельзя изменить элемент, которого нет.");
+
             if (index < 0)
                 throw new Exception("Индекс меньше нуля.");
         } catch (Exception e) {
@@ -159,6 +165,7 @@ public class Controller {
         try {
             if (index >= collection.getCountDepartments())
                 throw new Exception("Нельзя удалить элемент, которого нет.");
+
             if (index < 0)
                 throw new Exception("Индекс меньше нуля.");
         } catch (Exception e) {
@@ -181,6 +188,7 @@ public class Controller {
         try {
             if (index >= collection.getCountEmployees())
                 throw new Exception("Нельзя удалить элемент, которого нет.");
+
             if (index < 0)
                 throw new Exception("Индекс меньше нуля.");
         } catch (Exception e) {
@@ -203,6 +211,7 @@ public class Controller {
         try {
             if (index >= collection.getCountCandidates())
                 throw new Exception("Нельзя удалить элемент, которого нет.");
+
             if (index < 0)
                 throw new Exception("Индекс меньше нуля.");
         } catch (Exception e) {
@@ -327,12 +336,12 @@ public class Controller {
         String temp = scan.nextLine();
 
         if (temp.equals("+")) {
-            createDepartment(Department.createNewDepartment(scan));
+            createDepartment(Department.createNewDepartment(collection, scan));
         }
 
         if (collection.getCountDepartments() == 0) {
             System.out.println("Нет ни одного департамента, его необходимо создать.\nОн будет выбран для данного человека.");
-            createDepartment(Department.createNewDepartment(scan));
+            createDepartment(Department.createNewDepartment(collection, scan));
             return collection.getDepartments()[0];
         }
 

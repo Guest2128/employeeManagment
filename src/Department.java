@@ -19,13 +19,33 @@ public class Department {
         name = n;
     }
 
-    public void fill(Scanner scan) {
+    public void fill(Collection collection, Scanner scan) {
         System.out.println("Департамент:");
 
         System.out.print("  Название: ");
         while (name.length() == 0 || name.equals("Пусто")) {
             name = scan.nextLine();
         }
+
+        if (isEquals(collection)) {
+            collection.incCountDepartments(false);
+
+            System.out.println("Такой департамент уже есть.");
+        }
+    }
+
+    public boolean isEquals(Collection collection) {
+        Department[] departments = collection.getDepartments();
+
+        int size = collection.getCountDepartments();
+
+        for (int i = 0; i < size; ++i) {
+            if (departments[i].getName().equals(name)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     @Override
@@ -34,9 +54,9 @@ public class Department {
                 "Название = " + name + "\n}";
     }
 
-    public static Department createNewDepartment(Scanner scan) {
+    public static Department createNewDepartment(Collection collection, Scanner scan) {
         Department department = new Department();
-        department.fill(scan);
+        department.fill(collection, scan);
 
         return department;
     }

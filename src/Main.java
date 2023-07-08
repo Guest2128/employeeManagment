@@ -53,7 +53,7 @@ public class Main {
                             break;
 
                         switch (option) {
-                            case 1 -> controller.createDepartment(Department.createNewDepartment(scan));
+                            case 1 -> controller.createDepartment(Department.createNewDepartment(controller.getCollection(), scan));
                             case 2 -> controller.readDepartments(scanIndex(scan));
                             case 3 -> controller.readAllDepartments();
                             case 4 -> controller.updateDepartment(scanIndex(scan), scan);
